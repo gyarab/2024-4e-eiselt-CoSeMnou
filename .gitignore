@@ -1,0 +1,4 @@
+venv/
+*.pyc
+db.sqlite3
+frontend/static/css/style.css
