@@ -19,12 +19,12 @@
 
             <div class="row justify-content-center">
                 {% for school in schools %}
-                <div class="col-md-6 col-lg-4 mb-5">
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal{{ forloop.counter }}">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="{{ school.image.url }}" alt="{{ school.name }}" />
+                        <img class="img-fluid" src="{{school.image.url }}" alt="{{ school.name }}" />
                     </div>
                 </div>
                 {% endfor %}
@@ -47,8 +47,20 @@
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                <img class="img-fluid rounded mb-5" src="{{ school.image.url }}" alt="{{ school.name }}" />
-                                <p class="mb-4">{{ school.description }}</p>
+                                {% if school.image %}
+                                <img class="img-fluid rounded mb-5" src="{{school.image.url }}" alt="{{ school.name }}" />
+                                {% endif %}
+                                <p class="mb-4"><strong>Popis:</strong> {{ school.description }}</p>
+                                <p class="mb-4"><strong>Adresa:</strong> {{ school.address }}</p>
+                                {% if school.contact_email %}
+                                <p class="mb-4"><strong>Email:</strong> <a href="mailto:{{ school.contact_email }}">{{ school.contact_email }}</a></p>
+                                {% endif %}
+                                {% if school.phone_number %}
+                                <p class="mb-4"><strong>Telefon: +420 </strong> {{ school.phone_number }}</p>
+                                {% endif %}
+                                {% if school.link %}
+                                <p class="mb-4"><strong>Odkaz:</strong> <a href="{{ school.link }}" target="_blank">{{ school.link }}</a></p>
+                                {% endif %}
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
                                     Zavři

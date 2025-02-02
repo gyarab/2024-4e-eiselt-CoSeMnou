@@ -97,5 +97,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'frontend/static']
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+
+
 # DEFAULT_AUTO_FIELD: Výchozí typ primárního klíče pro modely
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
