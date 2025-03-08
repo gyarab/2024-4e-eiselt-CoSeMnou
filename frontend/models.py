@@ -1,18 +1,23 @@
-# frontend/models.py
 from django.db import models
 
-# frontend/models.py
 class School(models.Model):
-    name = models.CharField(max_length=100)   # Název školy 
-    image = models.ImageField(upload_to='images/')  # Změna cesty pro obrázky
-    address = models.CharField(max_length=255)  # Adresa školy
-    link = models.CharField(max_length=255, blank=True)
-    description = models.TextField(blank=True)  # Popis školy
-    contact_email = models.EmailField(blank=True)  # Kontaktní e-mail
-    phone_number = models.CharField(max_length=20, blank=True)  # Telefonní číslo
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    contact_email = models.EmailField(blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+
+    # Přidáváme minimální skóre pro přijetí
+    min_czech_score = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny")
+    min_math_score = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z matematiky")
+
+    
 
     def __str__(self):
-        return self.name  # Název školy se bude zobrazovat v administraci
+        return self.name
+
     
 
 class Student(models.Model):

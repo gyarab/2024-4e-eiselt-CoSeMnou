@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="compare-container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="compare-card p-4 shadow" style="width: 100%; max-width: 500px;">
-        <h2 class="text-center mb-4">Porovnat výsledky</h2>
+<div class="compare-container">
+    <div class="compare-card">
+        <h2>Porovnat výsledky</h2>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary w-100">Porovnat výsledky</button>
+            <button type="submit">Porovnat výsledky</button>
         </form>
-    {% if result %}
-    <div class="mt-4">
-        <h3>Výsledek:</h3>
-        <p>{{ result.first_school.name }}: {% if result.first_result %}Přijat{% else %}Nepřijat{% endif %}</p>
-        <p>{{ result.second_school.name }}: {% if result.second_result %}Přijat{% else %}Nepřijat{% endif %}</p>
+
+        {% if results %}
+            <h3>Výsledky porovnání:</h3>
+            {% for result in results %}
+                <div class="result">
+                    <h4>{{ result.school }}</h4>
+                    <p>Požadované body:</p>
+                    <ul class="no-bullets">
+                        <li>Čeština: {{ result.required_czech }}</li>
+                        <li>Matematika: {{ result.required_math }}</li>
+                    </ul>
+                    <p>
+                        Výsledek: 
+                        {% if result.accepted %}
+                            ✅ Přijat!
+                        {% else %}
+                            ❌ Nepřijat.
+                        {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}
