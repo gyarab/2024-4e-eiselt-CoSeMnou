@@ -18,31 +18,44 @@ def school_detail(request, pk):
     results = ExamResult.objects.filter(school=school)
     return render(request, 'school_detail.html', {'school': school, 'results': results})
 
-
-
 def compare_results(request):
-    form = CompareForm()
-    results = None
-
+    result = None
     if request.method == "POST":
         form = CompareForm(request.POST)
         if form.is_valid():
-            czech_score = form.cleaned_data['czech_score']
-            math_score = form.cleaned_data['math_score']
-            first_choice = form.cleaned_data['first_choice']
-            second_choice = form.cleaned_data['second_choice']
+            name = form.cleaned_data["name"]
+            czech_score = form.cleaned_data["czech_score"]
+            math_score = form.cleaned_data["math_score"]
+
+            # Získání objektů škol podle ID
+            first_school = School.objects.get(id=form.cleaned_data["first_choice"])
+            second_school = School.objects.get(id=form.cleaned_data["second_choice"])
+            third_choice_id = form.cleaned_data.get("third_choice")
+
+            third_school = None
+            if third_choice_id:  # Pokud uživatel vybral třetí školu
+                third_school = School.objects.get(id=third_choice_id)
 
             results = []
-            for school in [first_choice, second_choice]:
-                min_czech_score = school.min_czech_score
-                min_math_score = school.min_math_score
-                accepted = (czech_score >= min_czech_score and math_score >= min_math_score)
+            for school in [first_school, second_school, third_school]:
+                if school:
+                    meets_czech = czech_score >= school.min_czech_score
+                    meets_math = math_score >= school.min_math_score
+                    accepted = meets_czech and meets_math
 
-                results.append({
-                    "school": school.name,
-                    "required_czech": min_czech_score,
-                    "required_math": min_math_score,
-                    "accepted": accepted
-                })
+                    results.append({
+                        "school": school.name,
+                        "required_czech": school.min_czech_score,
+                        "required_math": school.min_math_score,
+                        "meets_czech": meets_czech,
+                        "meets_math": meets_math,
+                        "accepted": accepted
+                    })
 
-    return render(request, "compare_results.html", {"form": form, "results": results})
+            return render(request, "compare_results.html", {"form": form, "results": results})
+
+    else:
+        form = CompareForm()
+
+    return render(request, "compare_results.html", {"form": form, "results": None})
+

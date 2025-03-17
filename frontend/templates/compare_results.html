@@ -1,36 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="compare-container">
-    <div class="compare-card">
-        <h2>Porovnat výsledky</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Porovnat výsledky</button>
-        </form>
+<!-- Přidáme .container, aby se zarovnalo jako ostatní stránky -->
+<div class="container">
+    <div class="compare-container">
+        <div class="compare-card">
+            <h2>Porovnat výsledky</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Porovnat výsledky</button>
+            </form>
 
-        {% if results %}
-            <h3>Výsledky porovnání:</h3>
-            {% for result in results %}
-                <div class="result">
-                    <h4>{{ result.school }}</h4>
-                    <p>Požadované body:</p>
-                    <ul class="no-bullets">
-                        <li>Čeština: {{ result.required_czech }}</li>
-                        <li>Matematika: {{ result.required_math }}</li>
+            {% if results %}
+                <h3>Výsledky porovnání:</h3>
+                {% for result in results %}
+                    <div class="result">
+                        <h4>{{ result.school }}</h4>
+                        <p>Požadované body:</p>
+                        <ul class="no-bullets">
+                            <p>Čeština: {{ result.required_czech }}</p>
+                            <p>Matematika: {{ result.required_math }}</p>
+                        </ul>
+                        <p>
+                            Výsledek: 
+                            {% if result.accepted %}
+                                ✅ Přijat!
+                            {% else %}
+                                ❌ Nepřijat.
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+
+                <div class="info-box">
+                    <h3>Co dál?</h3>
+                    <p>Pokud jsi nebyl přijat, nezoufej! Zkus si projít naše tipy na zlepšení.</p>
+                    
+                    <h4>Tipy k přijímacím zkouškám:</h4>
+                    <ul>
+                        <li><a href="#">Seznam cvičných testů</a></li>
+                        <li><a href="#">Doporučené materiály pro přípravu</a></li>
+                        <li><a href="#">Jak se učit efektivně?</a></li>
                     </ul>
-                    <p>
-                        Výsledek: 
-                        {% if result.accepted %}
-                            ✅ Přijat!
-                        {% else %}
-                            ❌ Nepřijat.
-                        {% endif %}
-                    </p>
+
+                    <h4>Další kroky:</h4>
+                    <p>Pokud si nejsi jistý, kam podat přihlášku, můžeš si přečíst více o školách v našem <a href="/school_list">seznamu škol</a>.</p>
                 </div>
-            {% endfor %}
-        {% endif %}
+            {% endif %}
+
+            {% if form.errors %}
+                <div class="error-message">
+                    <p>⚠️ Nezvolil jsi žádnou školu:</p>
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

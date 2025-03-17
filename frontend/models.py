@@ -22,16 +22,26 @@ class School(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
-    czech_score = models.IntegerField()  # Body z češtiny
-    math_score = models.IntegerField()   # Body z matematiky
-    first_choice = models.ForeignKey('School', related_name='first_choice_students', on_delete=models.CASCADE)
-    second_choice = models.ForeignKey('School', related_name='second_choice_students', on_delete=models.CASCADE)
+    czech_score = models.IntegerField()
+    math_score = models.IntegerField()
+
+    first_choice = models.ForeignKey(
+        'School', related_name='first_choice_students', on_delete=models.CASCADE
+    )
+    second_choice = models.ForeignKey(
+        'School', related_name='second_choice_students', on_delete=models.CASCADE
+    )
+    third_choice = models.ForeignKey(
+        'School', related_name='third_choice_students', on_delete=models.CASCADE,
+        null=True, blank=True 
+    )
 
     def total_score(self):
         return self.czech_score + self.math_score
 
     def __str__(self):
         return self.name
+
 
 
 class ExamResult(models.Model):

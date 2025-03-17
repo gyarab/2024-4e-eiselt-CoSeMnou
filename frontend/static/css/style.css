@@ -91,6 +91,150 @@
   }
 }
 
+/* Kontejner, který vycentruje obsah a zachová původní odsazení */
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;  /* Zachování původní výšky */
+  margin-bottom: 0;  /* Bez spodního odsazení navíc */
+  padding: 20px 0;   /* Zachování původního odsazení */
+}
+
+/* Hlavní karta formuláře a výsledků */
+.compare-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;             /* Původní padding */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Titulek formuláře */
+.compare-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Samotný formulář */
+.compare-card form {
+  margin-bottom: 30px; /* Původní mezera pod formulářem */
+}
+
+/* Tlačítko pro porovnání */
+.compare-card form button {
+  width: 100%;
+  background-color: #007bff; /* Původní barva tlačítka */
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.compare-card form button:hover {
+  background-color: #0056b3;
+}
+
+/* Nadpis pro výsledky */
+.compare-card h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Jednotlivý blok výsledku */
+.result {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px; /* Každý výsledek oddělen mezerou */
+}
+
+/* Seznam bez puntíků */
+.no-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Info box pod výsledky */
+.info-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+.info-box ul {
+  list-style-type: none; /* Odstraní tečky */
+  padding: 0;           /* Zruší výchozí odsazení */
+  margin: 0;            /* Sjednotí zarovnání */
+}
+
+
+/* Chybová hláška */
+.error-message {
+  margin-top: 20px;
+  color: #dc3545;
+}
+
+.compare-card form button {
+  background-color: #1abc9c; /* Tady vlož hex kód barvy z obrázku */
+  color: #fff;               /* Barva textu na tlačítku */
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.compare-card form button:hover {
+  background-color: #159f85; /* Mírně tmavší odstín pro efekt při najetí myší */
+}
+
+.compare-container {
+  margin-top: 100px; /* Vytvoří 50px mezeru mezi navbar a compare oknem */
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1140px; /* Nebo jiná šířka dle ostatních stránek */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.compare-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0; /* Horní a spodní odsazení */
+}
+
+.compare-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
+
+.result ul {
+  list-style-type: none; 
+  padding-left: 0; 
+}
+
+
 .centered-container {
   display: flex;
   justify-content: center;
