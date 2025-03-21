@@ -20,8 +20,18 @@ class CompareForm(forms.Form):
         second_choice = cleaned_data.get("second_choice")
         third_choice = cleaned_data.get("third_choice")
 
-        # Kontrola, jestli uživatel nevybral pomlčku místo školy
-        if first_choice == "" or second_choice == "":
-            raise forms.ValidationError("Musíte vybrat alespoň první a druhou školu.")
+        if not first_choice or not second_choice:
+            self.add_error(None, "Musíte vybrat alespoň první a druhou školu.")
+
+        if first_choice == second_choice:
+            self.add_error(None, "První a druhá volba nesmí být stejná škola.")
+
+        if third_choice:
+            if first_choice == third_choice:
+                self.add_error(None, "První a třetí volba nesmí být stejná škola.")
+            if second_choice == third_choice:
+                self.add_error(None, "Druhá a třetí volba nesmí být stejná škola.")
 
         return cleaned_data
+
+

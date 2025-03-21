@@ -90,240 +90,208 @@
     scroll-behavior: smooth;
   }
 }
+/*******************************************************/
 
-/* Kontejner, který vycentruje obsah a zachová původní odsazení */
-.compare-container {
+/*******************************************************/
+
+/*******************************************************/
+
+.masthead {
+  min-height: 100vh; 
+  background-color: #1abc9c !important; 
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 70vh;  /* Zachování původní výšky */
-  margin-bottom: 0;  /* Bez spodního odsazení navíc */
-  padding: 20px 0;   /* Zachování původního odsazení */
+  align-items: center;
+  text-align: center;
 }
 
-/* Hlavní karta formuláře a výsledků */
+.masthead::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: url("/static/images/file.png") no-repeat center center;
+  background-size: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+  background-position: 54% 1000%; 
+}
+
+
+.masthead .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+html {
+  overflow-y: scroll;
+}
+
+body.compare-body {
+  background-color: #1abc9c !important;
+}
+
+.compare-section {
+  padding: 60px 0;
+  background: transparent; 
+}
+
+.compare-container {
+  background-color: #1abc9c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  margin-top: 50px;
+  margin-bottom: -51px;
+}
+
+.compare-container.expanded .compare-card::after {
+  background-image: none !important;
+}
+
 .compare-card {
-  width: 100%;
-  max-width: 600px;
-  padding: 30px;             /* Původní padding */
+  position: relative;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* Titulek formuláře */
-.compare-card h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Samotný formulář */
-.compare-card form {
-  margin-bottom: 30px; /* Původní mezera pod formulářem */
-}
-
-/* Tlačítko pro porovnání */
-.compare-card form button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
   width: 100%;
-  background-color: #007bff; /* Původní barva tlačítka */
-  color: #fff;
-  padding: 10px;
-  border: none;
+  padding: 30px;
+  text-align: center;
+  margin: 0 auto;
+  color: #2c3e50;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.compare-card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: #fff;
+  border-radius: 3px;
+  filter: blur(3px);
+  z-index: -1;
+}
+
+.compare-card::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: url("/static/images/file.png") no-repeat center center;
+  background-size: 160%;
+  background-position: 45% center;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.compare-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.compare-card h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.compare-card form {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.compare-card label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.compare-card input[type="text"],
+.compare-card input[type="number"],
+.compare-card select {
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
   border-radius: 4px;
+  padding: 5px;
+}
+
+.compare-card ::placeholder {
+  color: #2c3e50;
+}
+
+.compare-card form button {
+  background-color: #1abc9c;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .compare-card form button:hover {
-  background-color: #0056b3;
+  background-color: #159f85;
 }
 
-/* Nadpis pro výsledky */
-.compare-card h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Jednotlivý blok výsledku */
 .result {
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 5px;
-  margin-bottom: 20px; /* Každý výsledek oddělen mezerou */
+  margin-bottom: 20px;
 }
 
-/* Seznam bez puntíků */
-.no-bullets {
+.result h4 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.result ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Info box pod výsledky */
-.info-box {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-align: center;
-}
 .info-box ul {
-  list-style-type: none; /* Odstraní tečky */
-  padding: 0;           /* Zruší výchozí odsazení */
-  margin: 0;            /* Sjednotí zarovnání */
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
-
-/* Chybová hláška */
 .error-message {
   margin-top: 20px;
   color: #dc3545;
-}
-
-.compare-card form button {
-  background-color: #1abc9c; /* Tady vlož hex kód barvy z obrázku */
-  color: #fff;               /* Barva textu na tlačítku */
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.compare-card form button:hover {
-  background-color: #159f85; /* Mírně tmavší odstín pro efekt při najetí myší */
-}
-
-.compare-container {
-  margin-top: 100px; /* Vytvoří 50px mezeru mezi navbar a compare oknem */
-  margin-bottom: 20px;
+  text-align: center;
 }
 
 .container {
-  max-width: 1140px; /* Nebo jiná šířka dle ostatních stránek */
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-.compare-container {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0; /* Horní a spodní odsazení */
-}
-
-.compare-card {
-  width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+/******************************************************/
 
 
+/******************************************************/
 
-
-
-
-
-
-.result ul {
-  list-style-type: none; 
-  padding-left: 0; 
-}
-
-
-.centered-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.centered-card {
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-
-.compare-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh; /* Přizpůsobí se výšce obrazovky */
-  background-color: #f8f9fa; /* Světle šedé pozadí */
-  padding: 20px;
-}
-
-.compare-card {
-  background-color: #ffffff; /* Bílé pozadí */
-  border-radius: 8px; /* Zaoblené rohy */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín */
-  max-width: 600px; /* Maximální šířka */
-  width: 100%; /* Plná šířka v rámci omezení */
-  padding: 30px; /* Vnitřní odsazení */
-  text-align: center; /* Zarovnání textu na střed */
-}
-
-.compare-card h2 {
-  font-size: 2rem; /* Velikost nadpisu */
-  margin-bottom: 20px; /* Odstup pod nadpisem */
-  color: #333333; /* Tmavě šedá barva textu */
-}
-
-.compare-card form {
-  margin-top: 15px; /* Odstup formuláře od nadpisu */
-}
-
-.compare-card button {
-  background-color: #28a745; /* Zelené tlačítko */
-  color: #ffffff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.compare-card button:hover {
-  background-color: #218838; /* Tmavší zelená při najetí */
-}
-
-
-
-.center-text {
-  display: block;
-  text-align: center;
-}
-
-.portfolio-item mx-auto {
-  width: 350px; /* Pevná šířka dlaždice */
-  height: 350px; /* Pevná výška dlaždice */
-  overflow: hidden; /* Skryje přetékající část obsahu */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 15px; /* Odstup mezi dlaždicemi */
-  border: 1px solid #ddd; /* Volitelný rámeček */
-  border-radius: 8px; /* Volitelně přidat zakulacení */
-  background-color: #fff; /* Volitelné pozadí */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Volitelný stín */
-}
-
-.portfolio-item mx-auto img {
-  width: 100%; /* Obrázek bude odpovídat šířce dlaždice */
-  height: 100%; /* Obrázek bude odpovídat výšce dlaždice */
-  object-fit: contain; /* Zachová proporce obrázku a vyplní celý prostor */
-}
-
+/******************************************************/
 
 
 body {

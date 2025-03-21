@@ -5,8 +5,6 @@
 {% block content %}
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
-            <!-- head img-->
-            <img class="masthead-avatar mb-5" src="static/images/file.png" alt="..." />
             <!-- head title-->
             <h1 class="masthead-heading text-uppercase mb-0">CoSeMnou</h1>
             <!-- icons-->
@@ -86,12 +84,17 @@
                 <div class="col-lg-4 me-auto"><p class="lead">Buhvi jak dlouho jsem tohle delal</p></div>
             </div>
             <!-- About Section Button-->
+            {% load static %}
+
             <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="/static/images/ProStesti.png" download="ProStesti.png">
-                    <i class="fas fa-download me-2"></i>
-                    Stahuj pro štěstí
-                </a>                
+                <a class="btn btn-xl btn-outline-light" 
+                href="{% static 'images/ProStesti.jpg' %}" 
+                target="_blank">
+                    Otevřít obrázek
+                </a>
             </div>
+
+                        
         </div>
     </section>
     

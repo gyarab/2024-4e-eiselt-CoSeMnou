@@ -33,29 +33,30 @@ def compare_results(request):
             third_choice_id = form.cleaned_data.get("third_choice")
 
             third_school = None
-            if third_choice_id:  # Pokud uživatel vybral třetí školu
+            if third_choice_id:
                 third_school = School.objects.get(id=third_choice_id)
 
             results = []
             for school in [first_school, second_school, third_school]:
                 if school:
-                    meets_czech = czech_score >= school.min_czech_score
-                    meets_math = math_score >= school.min_math_score
+                    avg_czech = school.avg_czech_score if school.avg_czech_score is not None else 0
+                    avg_math = school.avg_math_score if school.avg_math_score is not None else 0
+
+                    meets_czech = czech_score >= avg_czech
+                    meets_math = math_score >= avg_math
                     accepted = meets_czech and meets_math
 
                     results.append({
                         "school": school.name,
-                        "required_czech": school.min_czech_score,
-                        "required_math": school.min_math_score,
+                        "avg_czech": avg_czech,
+                        "avg_math": avg_math,
                         "meets_czech": meets_czech,
                         "meets_math": meets_math,
                         "accepted": accepted
                     })
 
             return render(request, "compare_results.html", {"form": form, "results": results})
-
     else:
         form = CompareForm()
 
     return render(request, "compare_results.html", {"form": form, "results": None})
-

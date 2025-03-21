@@ -9,14 +9,33 @@ class School(models.Model):
     contact_email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
 
-    # Přidáváme minimální skóre pro přijetí
-    min_czech_score = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny")
-    min_math_score = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z matematiky")
-
-    
+    # Nová pole pro poslední tři minimální skóre z češtiny a matematiky
+    min_czech_score_1 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 1")
+    min_czech_score_2 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 2")
+    min_czech_score_3 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 3")
+    min_math_score_1 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z matematiky 1")
+    min_math_score_2 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z matematiky 2")
+    min_math_score_3 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z matematiky 3")
 
     def __str__(self):
         return self.name
+
+    @property
+    def avg_czech_score(self):
+        scores = [self.min_czech_score_1, self.min_czech_score_2, self.min_czech_score_3]
+        valid = [s for s in scores if s is not None]
+        if valid:
+            return sum(valid) / len(valid)
+        return None
+
+    @property
+    def avg_math_score(self):
+        scores = [self.min_math_score_1, self.min_math_score_2, self.min_math_score_3]
+        valid = [s for s in scores if s is not None]
+        if valid:
+            return sum(valid) / len(valid)
+        return None
+
 
     
 
