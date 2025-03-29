@@ -35,7 +35,7 @@
 - **Django** (Python) – Backend a zpracování formulářů.
 - **Bootstrap 5** – Responsivní layout a styling.
 - **SQLite** – Výchozí databáze (možno přejít na PostgreSQL či MySQL).
-- **HTML, CSS, JavaScript** – Frontendová logika a šablony.
+- **HTML, CSS** – Frontendová logika a šablony.
 
 ## Lokální spuštění
 
