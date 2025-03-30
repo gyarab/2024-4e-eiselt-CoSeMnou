@@ -11,14 +11,17 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
+            <!-- logo a nazev aplikace -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'homepage' %}">
                 <img src="{% static 'images/file.png' %}" alt="Logo" width="50" height="50" class="me-2">
                 CoSeMnou
             </a>            
+            <!-- tlacitko pro otevreni menu na mobilu -->
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- veci v navbaru -->
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1">
@@ -35,19 +38,20 @@
         </div>
     </nav>
 
-    <!-- Hlavní obsah -->
+    <!-- hlvni obsah -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- Copyright Section -->
+    <!-- copyright -->
     <div class="copyright py-4 text-center text-white">
         <div class="container"><small>Kopyrajt &copy; CoSeMnou 2024</small></div>
     </div>
 
-    <!-- bs core js -->
+    <!-- nacitani bootstrap a vlastniho js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>

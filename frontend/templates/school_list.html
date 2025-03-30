@@ -4,22 +4,22 @@
 
 {% block content %}
     {% load static %}
-    <div class="container text-center my-4">
-        <input type="text" placeholder="Hledat školu..." class="form-control" aria-label="Vyhledávání škol">
-    </div>
 
+    <!-- sekce s nazvem a seznamem skol -->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Seznam všech středních škol na Praze 6</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Seznam středních škol na Praze 6</h2>
             <div class="divider-custom divider-dark">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
 
+            <!-- seznam skol - dlazdice -->
             <div class="row justify-content-center">
                 {% for school in schools %}
                 <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <!-- dlazdice-->                    
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal{{ forloop.counter }}">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -32,11 +32,14 @@
         </div>
     </section>
 
+     <!-- okna s detailnimi info o skolach -->
     {% for school in schools %}
     <div class="portfolio-modal modal fade" id="portfolioModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="portfolioModal{{ forloop.counter }}" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
+                <!-- zaviraci tlacitko -->
                 <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <!-- okno -->
                 <div class="modal-body text-center pb-5">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -61,6 +64,7 @@
                                 {% if school.link %}
                                 <p class="mb-4"><strong>Odkaz:</strong> <a href="{{ school.link }}" target="_blank">{{ school.link }}</a></p>
                                 {% endif %}
+                                <!-- tlacitko pro zavreni okna -->
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
                                     Zavři

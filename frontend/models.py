@@ -9,7 +9,6 @@ class School(models.Model):
     contact_email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
 
-    # Nová pole pro poslední tři minimální skóre z češtiny a matematiky
     min_czech_score_1 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 1")
     min_czech_score_2 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 2")
     min_czech_score_3 = models.IntegerField(blank=True, null=True, verbose_name="Minimální skóre z češtiny 3")
@@ -20,6 +19,7 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
+    # vypocet prumeru z minimalnich skore
     @property
     def avg_czech_score(self):
         scores = [self.min_czech_score_1, self.min_czech_score_2, self.min_czech_score_3]
@@ -28,6 +28,7 @@ class School(models.Model):
             return sum(valid) / len(valid)
         return None
 
+    # vypocet prumeru z minimalnich skore
     @property
     def avg_math_score(self):
         scores = [self.min_math_score_1, self.min_math_score_2, self.min_math_score_3]
@@ -67,7 +68,6 @@ class ExamResult(models.Model):
     student_name = models.CharField(max_length=100)
     czech_score = models.IntegerField()
     math_score = models.IntegerField()
-    date_taken = models.DateField()
 
     def total_score(self):
         return self.czech_score + self.math_score

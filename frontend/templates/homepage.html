@@ -3,38 +3,41 @@
 {% block title %}Domovská stránka{% endblock %}
 
 {% block content %}
+
+    <!-- uvodni hlavicka se sloganem a tlacitkem -->    
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
-            <!-- head title-->
+            <!-- nadpis stranky -->
             <h1 class="masthead-heading text-uppercase mb-0">CoSeMnou</h1>
-            <!-- icons-->
+            <!-- oddelovac -->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- head subtitle-->
+            <!-- slogan -->
             <p class="masthead-subheading font-weight-light mb-0">
                 Nevíš, jestli ti stačí body pro přijetí na tvou vysněnou školu? 
             </p>
+             <!-- tlacitko na stranku s porovnavanim -->
             <div class="text-center mt-4">
                 <a href="{% url 'compare_results' %}" class="btn btn-outline-light btn-lg">Klikni zde</a>                
             </div>
         </div>
     </header>
 
-    <!-- school sections-->
+    <!-- sekce s nejoblibenejsimi skolami -->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
-            <!-- school sections title-->
+            <!-- nadpis sekce -->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nejvíce vybírané školy</h2>
-            <!-- icons-->
+            <!-- oddelovac -->
             <div class="divider-custom divider-dark">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- school sections grind-->
+            <!-- radky s obrazky skol -->
             <div class="row justify-content-center">
                 <!-- nad aleji-->
                 <div class="col-md-6 col-lg-4 mb-5">
@@ -67,25 +70,25 @@
         </div>
     </section>
 
-    <!-- about section-->
+    <!-- about sekce-->
     <section class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
-            <!-- about section title-->
+            <!-- nadpis sekce -->
             <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-            <!-- icons-->
+            <!-- oddelovac -->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- about section content-->
+            <!-- info a github -->
             <div class="row">
                 <div class="col-lg-4 ms-auto"><p class="lead">Ročníkový projekt Timona Eiselta 4.E GYARAB</p></div>
-                <div class="col-lg-4 me-auto"> <a href="https://github.com/gyarab/2024-4e-eiselt-CoSeMnou" class="lead">Odkaz na repozítář tohoto projektu</a> </div>
+                <div class="col-lg-4 me-auto"> <a href="https://github.com/gyarab/2024-4e-eiselt-CoSeMnou" class="lead" style="color: white;">Odkaz na repozítář tohoto projektu</a> </div>
             </div>
-            <!-- About Section Button-->
+            
+            <!-- tlacitko s obrazkem -->
             {% load static %}
-
             <div class="text-center mt-4">
                 <a class="btn btn-xl btn-outline-light" 
                 href="{% static 'images/ProStesti.jpg' %}" 
@@ -98,11 +101,7 @@
         </div>
     </section>
     
-    
-
-    <!-- Portfolio Modals-->
-    
-    <!-- Portfolio Modal 3-->
+    <!-- modal pro gymnazium nad aleji -->
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -111,17 +110,13 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
                                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0 text-dark">Gymnázium Nad Alejí</h2>
-                                <!-- Icon Divider-->
                                 <div class="divider-custom divider-dark">
                                     <div class="divider-custom-line"></div>
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                <!-- Portfolio Modal - Image-->
                                 <img class="img-fluid rounded mb-5" src="/static/images/fotonadaleji.jpg" alt="..." />
-                                <!-- Portfolio Modal - Text-->
                                 <p class="mb-4">Gymnázium Nad Alejí je střední škola sídlící v Praze, zaměřená na všeobecné vzdělávání s důrazem na rozvoj kritického myšlení, jazykových a přírodovědných dovedností. Nabízí osmiletý a čtyřletý studijní program a klade důraz na přípravu studentů na vysokoškolské studium. Škola je známá svým moderním přístupem k výuce, podporou mezinárodní spolupráce a širokým spektrem mimoškolních aktivit, jako jsou vědecké soutěže, sportovní akce a jazykové pobyty. Gymnázium Nad Alejí usiluje o komplexní rozvoj osobnosti studentů a jejich aktivní zapojení do společenského života.</p>
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
@@ -135,7 +130,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 1-->
+    <!-- modal pro gymnazium arabska -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -144,17 +139,13 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
                                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Gymnázium Arabská</h2>
-                                <!-- Icon Divider-->
                                 <div class="divider-custom">
                                     <div class="divider-custom-line"></div>
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                <!-- Portfolio Modal - Image-->
                                 <img class="img-fluid rounded mb-5" src="/static/images/fotoarabska.jpg" alt="..." />
-                                <!-- Portfolio Modal - Text-->
                                 <p class="mb-4">Gymnázium Arabská na Praze 6 je prestižní střední škola s širokým zaměřením na všeobecné vzdělání. Škola nabízí čtyřleté gymnaziální studium a klade důraz na kvalitní přípravu studentů k maturitě i k dalšímu studiu na vysokých školách. Gymnázium je známé svou vynikající úrovní ve výuce cizích jazyků, zejména angličtiny, a silným zaměřením na přírodní vědy a matematiku. Škola se také podílí na různých mezinárodních projektech a výměnných programech, což poskytuje studentům cenné zkušenosti a rozvoj jejich dovedností v multikulturním prostředí.</p>
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
@@ -168,7 +159,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 2-->
+    <!-- modal pro gymnazium jana keplera -->
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -177,17 +168,13 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
                                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Gymnázium Jana Keplera</h2>
-                                <!-- Icon Divider-->
                                 <div class="divider-custom">
                                     <div class="divider-custom-line"></div>
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                <!-- Portfolio Modal - Image-->
                                 <img class="img-fluid rounded mb-5" src="/static/images/fotojankepler.jpg" alt="..." />
-                                <!-- Portfolio Modal - Text-->
                                 <p class="mb-4">Gymnázium Jana Keplera v Praze je renomovaná střední škola, která se zaměřuje na poskytování kvalitního vzdělání v oblasti všeobecného gymnaziálního studia. Škola nabízí čtyřleté a osmileté programy a je známá svým důrazem na přírodní vědy, matematiku a cizí jazyky, zejména angličtinu. Gymnázium se aktivně podílí na různých soutěžích a projektech, což podporuje talent a zájem studentů o vědu a techniku. Kromě výuky se škola také zaměřuje na rozvoj kritického myšlení a kreativního myšlení studentů, čímž je připravuje na úspěšné studium na vysokých školách a další kariéru.</p>
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
@@ -200,13 +187,6 @@
             </div>
         </div>
     </div>
-
-    <!-- bs core js-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- js -->
-    <script src="/static/js/main.js"></script>
-
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
 

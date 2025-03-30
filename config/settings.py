@@ -1,30 +1,30 @@
 import os
 from pathlib import Path
 
-# BASE_DIR: Cesta ke kořenovému adresáři projektu
+# cesta ke korenovemu adresari projektu
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY: Tajný klíč pro zabezpečení. Tento klíč by měl být dobře chráněný.
+# tajny klic pro zabezpeceni aplikace
 SECRET_KEY = 'vygenerovany_tajny_klic'
 
-# DEBUG: Nastavení ladění. Ve vývojovém prostředí nastavte na True. Na produkci na False.
+# zapnuti ladiciho rezimu
 DEBUG = True
 
-# ALLOWED_HOSTS: Povolené hostitelské adresy, na kterých může být aplikace spuštěna.
+# povolene domeny
 ALLOWED_HOSTS = []
 
-# INSTALLED_APPS: Aplikace nainstalované v projektu
+# nainstalovane aplikace vcetne custom aplikace frontend
 INSTALLED_APPS = [
-    'django.contrib.admin',      # Administrační rozhraní
-    'django.contrib.auth',       # Autentizace
-    'django.contrib.contenttypes', # Typy obsahu
-    'django.contrib.sessions',   # Správa uživatelských relací
-    'django.contrib.messages',   # Systém zpráv
-    'django.contrib.staticfiles', # Správa statických souborů
-    'frontend',                  # Vaše vlastní aplikace
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'frontend',
 ]
 
-# MIDDLEWARE: Middleware komponenty, které zpracovávají požadavky a odpovědi
+# middleware vrstvy zpracovavajici pozadavky a odpovedi
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,14 +35,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ROOT_URLCONF: Kořenová konfigurace URL pro projekt
+# hlavni url konfigurace projektu
 ROOT_URLCONF = 'config.urls'
 
-# TEMPLATES: Nastavení pro šablony (templates)
+# konfigurace sablon
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], # Kořenový adresář pro šablony
+        # slozka s vlastnimi sablonami
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,18 +56,18 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION: Cesta k WSGI aplikaci, používaná pro nasazení na server
+# wsgi vstupni bod aplikace
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# DATABASES: Nastavení databáze
+# nastaveni databaze sqlite
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Typ databáze (SQLite je výchozí)
-        'NAME': BASE_DIR / 'db.sqlite3',         # Cesta k databázovému souboru
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-# AUTH_PASSWORD_VALIDATORS: Validátory hesel
+# validace hesel pro prihlaseni
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -82,25 +83,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# LANGUAGE_CODE: Jazyk pro projekt
+# jazykova lokalizace a casove pasmo
 LANGUAGE_CODE = 'cs'
-
-# TIME_ZONE: Časová zóna
 TIME_ZONE = 'Europe/Prague'
 
-# USE_I18N, USE_L10N, USE_TZ: Nastavení pro mezinárodní formátování a časové zóny
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# STATIC_URL: URL pro statické soubory
+# nastaveni statickych souboru
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'frontend/static']
 
+# nastaveni pro nahravani medii
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-
-
-# DEFAULT_AUTO_FIELD: Výchozí typ primárního klíče pro modely
+# vychozi typ primarniho klice v databazi
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

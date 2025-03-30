@@ -1,23 +1,25 @@
-# frontend/views.py
 from django.shortcuts import render, get_object_or_404
 from .models import School, ExamResult
 from django.shortcuts import render
 from .models import School
 from .forms import CompareForm
 
+# zobrazeni uvodni stranky
 def homepage(request):
     return render(request, 'homepage.html')
 
+# zobrazeni seznamu skol
 def school_list(request):
     schools = School.objects.all()
     return render(request, 'school_list.html', {'schools': schools})
 
-
+# detailni stranka skoly
 def school_detail(request, pk):
     school = get_object_or_404(School, pk=pk)
     results = ExamResult.objects.filter(school=school)
     return render(request, 'school_detail.html', {'school': school, 'results': results})
 
+# zpracovani porovnani vysledku
 def compare_results(request):
     result = None
     if request.method == "POST":
@@ -27,7 +29,7 @@ def compare_results(request):
             czech_score = form.cleaned_data["czech_score"]
             math_score = form.cleaned_data["math_score"]
 
-            # Získání objektů škol podle ID
+            # ziskani skol podle ID
             first_school = School.objects.get(id=form.cleaned_data["first_choice"])
             second_school = School.objects.get(id=form.cleaned_data["second_choice"])
             third_choice_id = form.cleaned_data.get("third_choice")
@@ -36,6 +38,7 @@ def compare_results(request):
             if third_choice_id:
                 third_school = School.objects.get(id=third_choice_id)
 
+            # vytvoreni seznamu s vysledky porovnani
             results = []
             for school in [first_school, second_school, third_school]:
                 if school:

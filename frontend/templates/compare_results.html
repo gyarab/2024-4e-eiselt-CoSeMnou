@@ -5,56 +5,59 @@ compare-body
 {% endblock %}
 
 {% block content %}
+
+<!-- hlavni cast sekce porovnavani -->
 <div class="container">
     <section class="compare-section">
         <div class="compare-container{% if results %} expanded{% endif %}">
+            <!-- formular -->
             <div class="compare-card">
                 <h2>Porovnat výsledky</h2>
 
                 <form method="POST">
                     {% csrf_token %}
                 
-                    <!-- Jméno -->
+                    <!-- vstupni pole pro jmeno -->
                     <div class="mb-3">
                         <label for="id_name">Jméno:</label><br>
                         {{ form.name }}
                     </div>
                 
-                    <!-- Body z češtiny -->
+                    <!-- vstupni pole pro body z cestiny -->
                     <div class="mb-3">
                         <label for="id_czech_score">Body z češtiny:</label><br>
                         {{ form.czech_score }}
                     </div>
                 
-                    <!-- Body z matematiky -->
+                    <!-- vstupni pole pro body z matematiky -->
                     <div class="mb-3">
                         <label for="id_math_score">Body z matematiky:</label><br>
                         {{ form.math_score }}
                     </div>
                 
-                    <!-- První volba -->
+                    <!-- vyber prvni skoly -->
                     <div class="mb-3">
                         <label for="id_first_choice">První volba:</label><br>
                         {{ form.first_choice }}
                     </div>
                 
-                    <!-- Druhá volba -->
+                    <!-- vyber druhe skoly -->
                     <div class="mb-3">
                         <label for="id_second_choice">Druhá volba:</label><br>
                         {{ form.second_choice }}
                     </div>
                 
-                    <!-- Třetí volba -->
+                    <!-- vyber treti skoly -->
                     <div class="mb-3">
                         <label for="id_third_choice">Třetí volba:</label><br>
                         {{ form.third_choice }}
                     </div>
                 
-                    <!-- Tlačítko -->
+                    <!-- tlacitko formulare -->
                     <button type="submit">Porovnat výsledky</button>
                 </form>
                 
-
+                <!-- zobrazeni vysledku porovnani pokud existuji -->
                 {% if results %}
                     <h3>Výsledky porovnání:</h3>
                     {% for result in results %}
@@ -76,6 +79,7 @@ compare-body
                         </div>
                     {% endfor %}
 
+                    <!-- doporuceni a odkazy na materialy -->
                     <div class="info-box">
                         <h3>Co dál?</h3>
                         <p>Pokud jsi nebyl přijat, nezoufej! Zkus si projít tipy na zlepšení.</p>
@@ -92,6 +96,7 @@ compare-body
                     </div>
                 {% endif %}
 
+                <!-- chybova lista -->
                 {% if form.non_field_errors %}
                     <div class="error-message">
                         <p>⚠️ Zkontroluj si zvolené školy ⚠️</p>
