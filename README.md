@@ -43,12 +43,11 @@
    ```bash
    cd cosemnou
    python -m venv venv
-   source venv/bin/activate   # Na Windows: venv\Scripts\activate
+   source venv/bin/activate
 
 2. **Přejděte** do složky projektu a vytvořte virtuální prostředí:
    ```bash
-   git clone https://github.com/uzivatel/cosemnou.git
-
+   git clone https://github.com/gyarab/2024-4e-eiselt-CoSeMnou.git
 3. **Nainstalujte** závislosti:
    ```bash
    pip install -r requirements.txt
